@@ -67,5 +67,33 @@ namespace AdventOfCode2022
         {
             return Rucksacks.Aggregate(0, (acc, c) => acc + FindRucksackPriority(c));
         }
+
+        public string FindBadge(string bag1, string bag2, string bag3)
+        {
+            string match = "";
+            foreach(var item in bag1)
+            {
+                if (bag2.Any(x => x == item) && bag3.Any(x => x == item))
+                {
+                    match = "" + item;
+                }
+            }
+            return match;
+        }
+
+        public int FindTotalBadgePriority()
+        {
+            int total = 0;  
+            for (int i = 0; i < Rucksacks.Count; i+=3)
+            {
+                string bag1 = Rucksacks[i];
+                string bag2 = Rucksacks[i+1];
+                string bag3 = Rucksacks[i+2];
+
+                string badge = FindBadge(bag1, bag2, bag3);
+                total += FindItemPriority(badge);
+            }
+            return total;
+        }
     }
 }

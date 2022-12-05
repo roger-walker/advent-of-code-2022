@@ -89,5 +89,42 @@ namespace AdventTests
 
             Assert.That(total, Is.EqualTo(157));
         }
+
+
+
+
+        [Test]
+        [TestCase("a", "a", "a", "a")]
+        [TestCase("ba", "ca", "ad", "a")]
+        [TestCase("vJrwpWtwJgWrhcsFMMfFFhFp", "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL", "PmmdzqPrVvPwwTWBwg", "r")]
+        [TestCase("wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn", "ttgJtRGJQctTZtZT", "CrZsJsPPZsGzwwsLwLmpwMDw", "Z")]
+        public void Given3Rucksacks_FindBadge(string bag1, string bag2, string bag3, string expected)
+        {
+            Day3 day = new Day3();
+
+            string actual = day.FindBadge(bag1, bag2, bag3);
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        public void GivenListOfRuckSacks_OrganizeIntoGroups_FindTotalBadgePriority()
+        {
+            List<string> rucks = new List<string>()
+            {
+                "vJrwpWtwJgWrhcsFMMfFFhFp",
+                "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
+                "PmmdzqPrVvPwwTWBwg",
+                "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
+                "ttgJtRGJQctTZtZT",
+                "CrZsJsPPZsGzwwsLwLmpwMDw"
+            };
+
+            Day3 day = new Day3(rucks);
+            int total = day.FindTotalBadgePriority();
+
+            Assert.That(total, Is.EqualTo(70));
+
+        }
+
     }
 }
