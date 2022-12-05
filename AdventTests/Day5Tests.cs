@@ -10,12 +10,23 @@ namespace AdventTests
     internal class Day5Tests
     {
         [Test]
-        public void Total_Degenerate()
+        [TestCase("move 1 from 1 to 2", 1, 1, 2)]
+        [TestCase("move 1 from 2 to 1", 1, 2, 1)]
+        [TestCase("move 3 from 1 to 3", 3, 1, 3)]
+        [TestCase("move 2 from 2 to 1", 2, 2, 1)]
+        [TestCase("move 1 from 1 to 2", 1, 1, 2)]
+        public void GivenRearrangement_FindQuantityToAndFrom(string rearr, int expectedQty, int expectedFrom, int expectedTo)
         {
             Day5 day = new Day5();
 
-            Assert.That(day, Is.Not.Null);
-        }
+            (int actualQty, int actualFrom, int actualTo) = day.FindRearragementValues(rearr);
 
+            Assert.Multiple(() =>
+            {
+                Assert.That(actualQty, Is.EqualTo(expectedQty));
+                Assert.That(actualFrom, Is.EqualTo(expectedFrom));
+                Assert.That(actualTo, Is.EqualTo(expectedTo));
+            });
+        }
     }
 }
