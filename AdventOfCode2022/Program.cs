@@ -28,6 +28,11 @@ Console.WriteLine($"Day 3 Total Priority: {day3.FindTotalPriority()}");
 Console.WriteLine($"Day 3 Badge Priority: {day3.FindTotalBadgePriority()}");
 
 
+var day4Assignments = GetFileInput("../../../Inputs/day4-1.txt");
+Day4 day4 = new Day4();
+Console.WriteLine($"Day 4 Total Fully Container: {day4.TotalFullyContained(day4Assignments)}");
+Console.WriteLine($"Day 4 Total Some Overlap: {day4.TotalSomeOverlap(day4Assignments)}");
+
 static List<string> GetFileInput(string fileName)
 {
     List<string> list = new List<string>();
