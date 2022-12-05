@@ -22,6 +22,12 @@ Console.WriteLine($"Day 2 results: {day2.TallyScore()}");
 Day2 day2part2 = new Day2(results, useDecisionMap: true);
 Console.WriteLine($"Day 2 part 2 results: {day2part2.TallyScore()}");
 
+var day3Rucks = GetFileInput("../../../Inputs/day3-1.txt");
+Day3 day3 = new Day3 (day3Rucks);
+Console.WriteLine($"Day 3 Total Priority: {day3.FindTotalPriority()}");
+Console.WriteLine($"Day 3 Badge Priority: {day3.FindTotalBadgePriority()}");
+
+
 static List<string> GetFileInput(string fileName)
 {
     List<string> list = new List<string>();
