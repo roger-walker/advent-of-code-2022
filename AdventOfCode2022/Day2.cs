@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode2022
+﻿namespace AdventOfCode2022
 {
     public class Day2
     {
         public const int Rock = 1;
         public const int Paper = 2;
         public const int Scissors = 3;
-        
+
         private Dictionary<string, int> ScoringMap = new Dictionary<string, int>()
         {
             ["A"] = Rock, //opp rock
@@ -90,7 +84,7 @@ namespace AdventOfCode2022
             return result;
         }
 
-        public (int,int) FindScores(string result)
+        public (int, int) FindScores(string result)
         {
             int left = 0;
             int right = 0;
@@ -100,18 +94,18 @@ namespace AdventOfCode2022
             if (scores.Length == 2)
             {
                 left = ScoringMap[scores[0]];
-                right = UseDecisionMap ? (int) DecisionMap[scores[1]] : ScoringMap[scores[1]];
+                right = UseDecisionMap ? (int)DecisionMap[scores[1]] : ScoringMap[scores[1]];
             }
-            
+
             return (left, right);
         }
 
-        
+
 
         public int RoundScore((int opp, int you) round)
         {
             int score = round.you + (int)CheckRound(round.opp, round.you);
-            
+
             return score;
         }
 
@@ -141,13 +135,13 @@ namespace AdventOfCode2022
             }
             else if (desc == Decision.Win)
             {
-                correctPlay = WinMap[opp];    
+                correctPlay = WinMap[opp];
             }
             else if (desc == Decision.Loss)
             {
                 correctPlay = LossMap[opp];
             }
-                
+
             return correctPlay;
         }
     }
