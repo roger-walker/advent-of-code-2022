@@ -1,10 +1,5 @@
 ﻿using AdventOfCode2022;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventTests
 {
@@ -100,11 +95,11 @@ namespace AdventTests
 
         [Test]
         [TestCaseSource(typeof(MoveStackCases))]
-        public void GivenRearrangeValuesAndStacks_PerformRearrange(List<Stack<string>> start, int qty ,int from ,int to, List<Stack<string>> expected)
+        public void GivenRearrangeValuesAndStacks_PerformRearrange(List<Stack<string>> start, int qty, int from, int to, List<Stack<string>> expected)
         {
             Day5 day = new Day5();
             var actual = day.PerformRearrange(start, qty, from, to);
-            
+
             Assert.That(actual, Is.EqualTo(expected));
 
         }
@@ -243,7 +238,7 @@ namespace AdventTests
         [TestCaseSource(typeof(MoveStack9001Cases))]
         public void GivenRearrangeValuesAndStacks_PerformRearrange9001(List<Stack<string>> start, int qty, int from, int to, List<Stack<string>> expected)
         {
-            Day5 day = new Day5(is9001 : true);
+            Day5 day = new Day5(is9001: true);
             var actual = day.PerformRearrange(start, qty, from, to);
 
             Assert.That(actual, Is.EqualTo(expected));

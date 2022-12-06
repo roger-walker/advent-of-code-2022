@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace AdventOfCode2022
 {
@@ -73,9 +68,9 @@ namespace AdventOfCode2022
             }
 
             temp.Reverse();
-            foreach(var item in temp)
+            foreach (var item in temp)
             {
-                result[to-1].Push(item);
+                result[to - 1].Push(item);
             }
 
             return result;
@@ -101,10 +96,10 @@ namespace AdventOfCode2022
 
         public string PerformMoves(List<Stack<string>> stacks, List<string> moves)
         {
-            foreach(var move in moves)
+            foreach (var move in moves)
             {
                 (int qty, int from, int to) = FindRearragementValues(move);
-                stacks = PerformRearrange(stacks, qty, from, to);  
+                stacks = PerformRearrange(stacks, qty, from, to);
             }
             return GenerateMessage(stacks);
         }

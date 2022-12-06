@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode2022
+﻿namespace AdventOfCode2022
 {
     public class Day3
     {
@@ -23,8 +17,8 @@ namespace AdventOfCode2022
         public List<string> SplitIntoCompartments(string rucksack)
         {
             int half = rucksack.Length / 2;
-            string comp1  = rucksack.Substring(0, half);
-            string comp2  = rucksack.Substring(half);
+            string comp1 = rucksack.Substring(0, half);
+            string comp2 = rucksack.Substring(half);
 
             return new List<string>() { comp1, comp2 };
         }
@@ -33,11 +27,11 @@ namespace AdventOfCode2022
         {
             string match = "";
 
-            foreach(var item in comp1)
+            foreach (var item in comp1)
             {
                 if (comp2.Any(x => x == item))
                 {
-                    match = "" +  item;
+                    match = "" + item;
                 }
             }
 
@@ -71,7 +65,7 @@ namespace AdventOfCode2022
         public string FindBadge(string bag1, string bag2, string bag3)
         {
             string match = "";
-            foreach(var item in bag1)
+            foreach (var item in bag1)
             {
                 if (bag2.Any(x => x == item) && bag3.Any(x => x == item))
                 {
@@ -83,12 +77,12 @@ namespace AdventOfCode2022
 
         public int FindTotalBadgePriority()
         {
-            int total = 0;  
-            for (int i = 0; i < Rucksacks.Count; i+=3)
+            int total = 0;
+            for (int i = 0; i < Rucksacks.Count; i += 3)
             {
                 string bag1 = Rucksacks[i];
-                string bag2 = Rucksacks[i+1];
-                string bag3 = Rucksacks[i+2];
+                string bag2 = Rucksacks[i + 1];
+                string bag3 = Rucksacks[i + 2];
 
                 string badge = FindBadge(bag1, bag2, bag3);
                 total += FindItemPriority(badge);

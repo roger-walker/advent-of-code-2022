@@ -1,5 +1,4 @@
 ﻿using AdventOfCode2022;
-using NUnit.Framework;
 
 namespace AdventTests
 {
@@ -35,7 +34,7 @@ namespace AdventTests
 
             Assert.That(actual, Is.EqualTo(expected));
 
-         }
+        }
 
         [Test]
         [TestCase("a", 1)]

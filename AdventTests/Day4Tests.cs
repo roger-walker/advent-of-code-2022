@@ -15,7 +15,7 @@ namespace AdventTests
 
             var actual = day.SplitPair(pair);
             List<string> expected = new List<string>() { asmt1, asmt2 };
-            
+
             Assert.That(actual, Is.EqualTo(expected));
         }
 
@@ -25,7 +25,7 @@ namespace AdventTests
         [TestCase("1-2", 1, 2)]
         [TestCase("2-8", 2, 8)]
         [TestCase("200-800", 200, 800)]
-        public void GivenRange_FindStartAndEnd(string range, int expectedStart, int expectedEnd) 
+        public void GivenRange_FindStartAndEnd(string range, int expectedStart, int expectedEnd)
         {
             Day4 day = new Day4();
 
@@ -37,21 +37,21 @@ namespace AdventTests
         }
 
         [Test]
-        [TestCase(1,2,3,4, false)]
-        [TestCase(1,4,3,5, false)]
-        [TestCase(1,4,2,3, true)]
-        [TestCase(1,4,1,2, true)]
-        [TestCase(1,4,3,4, true)]
-        [TestCase(1,4,1,4, true)]
-        [TestCase(1,4,1,4, true)]
-        [TestCase(1,2,1,4, true)]
+        [TestCase(1, 2, 3, 4, false)]
+        [TestCase(1, 4, 3, 5, false)]
+        [TestCase(1, 4, 2, 3, true)]
+        [TestCase(1, 4, 1, 2, true)]
+        [TestCase(1, 4, 3, 4, true)]
+        [TestCase(1, 4, 1, 4, true)]
+        [TestCase(1, 4, 1, 4, true)]
+        [TestCase(1, 2, 1, 4, true)]
 
-        [TestCase(2,4,6,8, false)]
-        [TestCase(2,3,4,5, false)]
-        [TestCase(5,7,7,9, false)]
-        [TestCase(2,8,3,7, true)]
-        [TestCase(6,6,4,6, true)]
-        [TestCase(2,6,4,8, false)]
+        [TestCase(2, 4, 6, 8, false)]
+        [TestCase(2, 3, 4, 5, false)]
+        [TestCase(5, 7, 7, 9, false)]
+        [TestCase(2, 8, 3, 7, true)]
+        [TestCase(6, 6, 4, 6, true)]
+        [TestCase(2, 6, 4, 8, false)]
 
         public void Given2Areas_DetermineIfOneIsFullyContained(int s1, int e1, int s2, int e2, bool expected)
         {
