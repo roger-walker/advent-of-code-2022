@@ -34,6 +34,12 @@ namespace AdventOfCode2022
             new Stack<string>(new string [] { "R","D","G","C","P","B","Q","W" }),
         };
 
+        public Day5(bool is9001 = false)
+        {
+            Is9001 = is9001;
+        }
+
+        public bool Is9001 { get; }
 
         public (int, int, int) FindRearragementValues(string rearr)
         {
@@ -53,11 +59,35 @@ namespace AdventOfCode2022
 
         public List<Stack<string>> PerformRearrange(List<Stack<string>> start, int qty, int from, int to)
         {
+            return Is9001 ? AdvancedRearrange(start, qty, from, to) : StandardRearrange(start, qty, from, to);
+        }
+
+        private List<Stack<string>> AdvancedRearrange(List<Stack<string>> start, int qty, int from, int to)
+        {
+            List<Stack<string>> result = new List<Stack<string>>(start);
+            List<string> temp = new List<string>();
+            while (qty > 0)
+            {
+                temp.Add(result[from - 1].Pop());
+                qty--;
+            }
+
+            temp.Reverse();
+            foreach(var item in temp)
+            {
+                result[to-1].Push(item);
+            }
+
+            return result;
+        }
+
+        private List<Stack<string>> StandardRearrange(List<Stack<string>> start, int qty, int from, int to)
+        {
             List<Stack<string>> result = new List<Stack<string>>(start);
 
             while (qty > 0)
             {
-                result[to-1].Push(result[from-1].Pop());
+                result[to - 1].Push(result[from - 1].Pop());
                 qty--;
             }
 

@@ -170,5 +170,84 @@ namespace AdventTests
         }
 
 
+        public class MoveStack9001Cases : IEnumerable
+        {
+            public IEnumerator GetEnumerator()
+            {
+
+                // move 1 from 2 to 1
+                yield return new object[] {
+                    new List<Stack<string>>(){
+                        new Stack<string>(new string[] {"Z", "N"}),
+                        new Stack<string>( new string[] {"M", "C", "D"}),
+                        new Stack<string>(new string[] { "P" })
+                    },
+                    1,2,1,
+                    new List<Stack<string>>(){
+                        new Stack<string>(new string [] { "Z", "N", "D"}),
+                        new Stack<string>(new string [] { "M", "C"}),
+                        new Stack<string>(new string [] { "P" })
+                    }
+                };
+
+                // move 3 from 1 to 3
+                yield return new object[] {
+                    new List<Stack<string>>(){
+                        new Stack<string>(new string [] { "Z", "N", "D"}),
+                        new Stack<string>(new string [] { "M", "C"}),
+                        new Stack<string>(new string [] { "P" })
+                    },
+                    3,1,3,
+                    new List<Stack<string>>(){
+                        new Stack<string>(new string [] { }),
+                        new Stack<string>(new string [] { "M", "C"}),
+                        new Stack<string>(new string [] { "P","Z", "N", "D"})
+                    }
+                };
+
+                // move 2 from 2 to 1
+                yield return new object[] {
+                    new List<Stack<string>>(){
+                        new Stack<string>(new string [] { }),
+                        new Stack<string>(new string [] { "M", "C" }),
+                        new Stack<string>(new string [] { "P","Z", "N", "D"})
+                    },
+                    2,2,1,
+                    new List<Stack<string>>(){
+                        new Stack<string>(new string [] { "M", "C" }),
+                        new Stack<string>(new string [] { }),
+                        new Stack<string>(new string [] { "P","Z", "N", "D"})
+                    }
+                };
+
+                // move 1 from 1 to 2
+                yield return new object[] {
+                    new List<Stack<string>>(){
+                        new Stack<string>(new string [] { "M", "C" }),
+                        new Stack<string>(new string [] { }),
+                        new Stack<string>(new string [] { "P","Z", "N", "D"})
+                    },
+                    1,1,2,
+                    new List<Stack<string>>(){
+                        new Stack<string>(new string [] { "M" }),
+                        new Stack<string>(new string [] { "C" }),
+                        new Stack<string>(new string [] { "P","Z", "N", "D"})
+                    }
+                };
+
+            }
+
+        }
+
+        [Test]
+        [TestCaseSource(typeof(MoveStack9001Cases))]
+        public void GivenRearrangeValuesAndStacks_PerformRearrange9001(List<Stack<string>> start, int qty, int from, int to, List<Stack<string>> expected)
+        {
+            Day5 day = new Day5(is9001 : true);
+            var actual = day.PerformRearrange(start, qty, from, to);
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
     }
 }

@@ -39,6 +39,8 @@ var day5Moves = GetFileInput("../../../Inputs/day5.txt");
 Day5 day5 = new Day5();
 Console.WriteLine($"Day 5 Message: {day5.PerformMoves(day5.Start, day5Moves)}");
 
+Day5 day5b = new Day5(is9001: true);
+Console.WriteLine($"Day 5 Message: {day5b.PerformMoves(day5b.Start, day5Moves)}");
 
 
 
