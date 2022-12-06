@@ -33,6 +33,18 @@ Day4 day4 = new Day4();
 Console.WriteLine($"Day 4 Total Fully Container: {day4.TotalFullyContained(day4Assignments)}");
 Console.WriteLine($"Day 4 Total Some Overlap: {day4.TotalSomeOverlap(day4Assignments)}");
 
+
+
+var day5Moves = GetFileInput("../../../Inputs/day5.txt");
+Day5 day5 = new Day5();
+Console.WriteLine($"Day 5 Message: {day5.PerformMoves(day5.Start, day5Moves)}");
+
+
+
+
+
+
+
 static List<string> GetFileInput(string fileName)
 {
     List<string> list = new List<string>();
