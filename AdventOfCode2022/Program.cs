@@ -42,6 +42,12 @@ Console.WriteLine($"Day 5 Message: {day5.PerformMoves(day5.Start, day5Moves)}");
 Day5 day5b = new Day5(is9001: true);
 Console.WriteLine($"Day 5 Message: {day5b.PerformMoves(day5b.Start, day5Moves)}");
 
+var day6Message = GetFileInput("../../../Inputs/day6.txt");
+Day6 day6 = new Day6();
+Console.WriteLine($"Day 6 Start of Packet: {day6.FindStartIndex(day6Message.First())}");
+
+Day6 day6b = new Day6(isMessageCheck: true);
+Console.WriteLine($"Day 6 Start of Message: {day6b.FindStartIndex(day6Message.First())}");
 
 
 
