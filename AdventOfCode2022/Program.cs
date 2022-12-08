@@ -49,8 +49,10 @@ Console.WriteLine($"Day 6 Start of Packet: {day6.FindStartIndex(day6Message.Firs
 Day6 day6b = new Day6(isMessageCheck: true);
 Console.WriteLine($"Day 6 Start of Message: {day6b.FindStartIndex(day6Message.First())}");
 
-
-
+var day7cmds = GetFileInput("../../../Inputs/day7.txt");
+Day7 day7 = new Day7();
+Console.WriteLine($"Day 7 Small Dir Sum: {day7.SmallSum(day7cmds)}");
+Console.WriteLine($"Day 7 Small Dir to Delete: {day7.FindSmallestDirToDeleteSize(day7cmds, 70000000, 30000000)}");
 
 
 static List<string> GetFileInput(string fileName)
@@ -67,3 +69,4 @@ static List<string> GetFileInput(string fileName)
     }
     return list;
 }
+
