@@ -11,11 +11,16 @@ namespace AdventTests
     {
 
         [Test]
-        public void blah()
+        public void GivenInput_CreateTreeMap()
         {
-            Day8 day = new Day8();
+            List<string> list = new List<string>()
+            {
+                "1"
+            };
 
-            Assert.That(day, Is.Not.Null);
+            Day8 day = new Day8(list);
+
+            Assert.That(day.TreeMap[0][0], Is.EqualTo(1));
         }
 
     }
