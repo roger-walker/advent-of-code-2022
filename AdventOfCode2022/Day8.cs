@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode2022
+﻿namespace AdventOfCode2022
 {
     public class Day8
     {
@@ -217,7 +211,7 @@ namespace AdventOfCode2022
         public List<List<int>> FindScenicScores()
         {
             List<List<int>> scores = new List<List<int>>();
-            
+
             for (int j = 0; j < MapHeight; j++)
             {
                 List<int> row = new List<int>();
@@ -241,9 +235,9 @@ namespace AdventOfCode2022
             List<List<int>> scores = FindScenicScores();
 
             int max = 0;
-            foreach(List<int> row in scores)
+            foreach (List<int> row in scores)
             {
-                foreach(int score in row)
+                foreach (int score in row)
                 {
                     max = Math.Max(max, score);
                 }

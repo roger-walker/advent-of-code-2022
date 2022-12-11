@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace AdventOfCode2022
+﻿namespace AdventOfCode2022
 {
     public class Day6
     {
@@ -21,7 +19,7 @@ namespace AdventOfCode2022
 
             string poss = "";
             int i = 1;
-            foreach(var ch in message)
+            foreach (var ch in message)
             {
                 poss += ch;
                 if (poss.Length > length)
