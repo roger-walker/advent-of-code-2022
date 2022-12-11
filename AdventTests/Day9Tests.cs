@@ -131,7 +131,7 @@ namespace AdventTests
                     new HashSet<Location>(){ new Location(0,0), new Location(1,0), new Location(2,0) },
                     3
                 };
-                
+
                 yield return new object[] {
                     new string[] { "R 3", "L 3" },
                     new HashSet<Location>(){ new Location(0,0), new Location(1,0), new Location(2,0) },
@@ -170,14 +170,14 @@ namespace AdventTests
 
         [Test]
         [TestCaseSource(typeof(MoveTailTests))]
-        public void GivenInst_EnsureTailLocations(string [] instr, HashSet<Location> expected, int count)
+        public void GivenInst_EnsureTailLocations(string[] instr, HashSet<Location> expected, int count)
         {
             Day9 day = new Day9();
             day.RunInstructions(instr.ToList());
 
             Assert.That(day.TailLocations, Is.EquivalentTo(expected));
             Assert.That(day.GetTailPositions(), Is.EqualTo(count));
-            
+
         }
 
 
@@ -193,7 +193,7 @@ namespace AdventTests
                                     "R 17",
                                     "D 10",
                                     "L 25",
-                                    "U 20" 
+                                    "U 20"
                     },
                     new HashSet<Location>(){ new Location(0,0),
                                              new Location(1,1),
@@ -237,7 +237,7 @@ namespace AdventTests
             }
         }
 
-                [Test]
+        [Test]
         [TestCaseSource(typeof(MoveLongTailTests))]
         public void GivenInst_EnsureLongTailLocations(string[] instr, HashSet<Location> expected, int count)
         {

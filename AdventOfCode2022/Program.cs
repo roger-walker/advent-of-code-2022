@@ -69,6 +69,16 @@ Day9 day9b = new Day9(8);
 day9b.RunInstructions(day9moves);
 Console.WriteLine($"Day 9: Long Tail Move Count: {day9b.GetTailPositions()}");
 
+var day10ops = GetFileInput("../../../Inputs/day10.txt");
+Day10 day10 = new Day10();
+Console.WriteLine($"Day 10: Signal Strengths Sum: {day10.FindSumSignalStrengths(day10ops)}");
+
+var day10Image = day10.DrawImage(day10.RunInstructions(day10ops));
+Console.Write("========================================");
+Console.WriteLine(day10Image);
+Console.WriteLine("========================================");
+
+
 
 static List<string> GetFileInput(string fileName)
 {

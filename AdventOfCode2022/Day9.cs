@@ -73,14 +73,14 @@
 
         public Day9(int extra = 0)
         {
-            TailLocations.Add(new Location(0,0));
+            TailLocations.Add(new Location(0, 0));
 
             //Knots.Add(Head);
-            for(int i = 0; i < extra; i++)
+            for (int i = 0; i < extra; i++)
             {
-                Knots.Add(new Location(0,0));
+                Knots.Add(new Location(0, 0));
             }
-            Knots.Add(Tail);    
+            Knots.Add(Tail);
         }
 
         public int GetTailPositions()
@@ -122,7 +122,7 @@
                     }
                     curr = loc;
                 }
-            
+
                 headMoves.Add(Head);
             }
 
