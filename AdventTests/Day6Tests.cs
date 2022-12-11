@@ -19,7 +19,7 @@ namespace AdventTests
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        
+
 
         [Test]
         [TestCase("abc", -1)]

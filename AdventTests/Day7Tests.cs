@@ -32,34 +32,34 @@ namespace AdventTests
     7214296 k
      */
 
-/*
-            List<string> list = new List<string>()
-            {
-                "$ cd /",
-                "$ ls",
-                "dir a",
-                "14848514 b.txt",
-                "8504156 c.dat",
-                "dir d",
-                "$ cd a",
-                "$ ls",
-                "dir e",
-                "29116 f",
-                "2557 g",
-                "62596 h.lst",
-                "$ cd e",
-                "$ ls",
-                "584 i",
-                "$ cd ..",
-                "$ cd ..",
-                "$ cd d",
-                "$ ls",
-                "4060174 j",
-                "8033020 d.log",
-                "5626152 d.ext",
-                "7214296 k"
-            }; 
-*/
+    /*
+                List<string> list = new List<string>()
+                {
+                    "$ cd /",
+                    "$ ls",
+                    "dir a",
+                    "14848514 b.txt",
+                    "8504156 c.dat",
+                    "dir d",
+                    "$ cd a",
+                    "$ ls",
+                    "dir e",
+                    "29116 f",
+                    "2557 g",
+                    "62596 h.lst",
+                    "$ cd e",
+                    "$ ls",
+                    "584 i",
+                    "$ cd ..",
+                    "$ cd ..",
+                    "$ cd d",
+                    "$ ls",
+                    "4060174 j",
+                    "8033020 d.log",
+                    "5626152 d.ext",
+                    "7214296 k"
+                }; 
+    */
 
 
     internal class Day7Tests
@@ -228,7 +228,7 @@ namespace AdventTests
             int expected = 95437;
 
             Day7 day = new Day7();
-            var actual = day.FindSmallDirSum(dirSizes, limit:  100000);
+            var actual = day.FindSmallDirSum(dirSizes, limit: 100000);
 
             Assert.That(actual, Is.EqualTo(expected));
 
@@ -302,7 +302,7 @@ namespace AdventTests
                 "7214296 k"
             };
             int expected = 24933642;
-            
+
             Day7 day = new Day7();
             var actual = day.FindSmallestDirToDeleteSize(list, 70000000, 30000000);
 

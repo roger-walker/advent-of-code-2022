@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace AdventOfCode2022
 {
@@ -20,7 +15,7 @@ namespace AdventOfCode2022
 
     public class Day7
     {
-        public (string,int) FindFileInfo(string file)
+        public (string, int) FindFileInfo(string file)
         {
             int fileSize = 0;
             string filename = "";
@@ -48,7 +43,8 @@ namespace AdventOfCode2022
             {
                 entryType = EntryTypes.Dir;
             }
-            else{
+            else
+            {
 
                 string filePattern = @"^\d+";
                 if (Regex.Match(entry, filePattern).Success)
@@ -72,7 +68,7 @@ namespace AdventOfCode2022
                 {
                     next = dir;
                 }
-                else if(dir == "..")
+                else if (dir == "..")
                 {
                     int lastSlash = curr.LastIndexOf('/');
                     next = lastSlash <= 0 ? "/" : curr.Substring(0, lastSlash);
@@ -88,10 +84,10 @@ namespace AdventOfCode2022
 
         public string FindDirName(string dir)
         {
-            
+
             string dirname = "";
             var dirInfo = dir.Split(' ');
-            
+
             dirname = dirInfo[1];
 
             return dirname;
@@ -135,7 +131,7 @@ namespace AdventOfCode2022
 
         public Dictionary<string, int> FindDirSizes(Dictionary<string, int> map)
         {
-            Dictionary<string , int> sizes = new Dictionary<string , int>();
+            Dictionary<string, int> sizes = new Dictionary<string, int>();
 
             sizes.Add("/", map.Values.Sum(x => x));
             var dirs = map.Keys.Where(x => map[x] == 0);

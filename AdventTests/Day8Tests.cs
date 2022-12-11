@@ -1,9 +1,4 @@
 ﻿using AdventOfCode2022;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventTests
 {
@@ -37,7 +32,7 @@ namespace AdventTests
                                  "33549",
                                  "35390" }, 3, 3, 4)]
 
-        public void GivenMoreInput_CreateTreeMap(string [] input, int row, int col, int expected)
+        public void GivenMoreInput_CreateTreeMap(string[] input, int row, int col, int expected)
         {
             List<string> list = input.ToList();
 
@@ -155,7 +150,7 @@ namespace AdventTests
                                  "65332",
                                  "33549",
                                  "35390" }, 21)]
-        public void GivenInput_DetermineCountOfVisibleTrees(string [] input, int expected)
+        public void GivenInput_DetermineCountOfVisibleTrees(string[] input, int expected)
         {
             List<string> list = input.ToList();
 
@@ -226,7 +221,7 @@ namespace AdventTests
                                  "65332",
                                  "33549",
                                  "35390" }, 8)]
-        public void GivenInput_FindMacScenicScore(string [] input, int expected)
+        public void GivenInput_FindMacScenicScore(string[] input, int expected)
         {
 
             List<string> list = input.ToList();
