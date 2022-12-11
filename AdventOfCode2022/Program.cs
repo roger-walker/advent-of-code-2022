@@ -60,7 +60,13 @@ Day8 day8 = new Day8(day8map);
 Console.WriteLine($"Day 8 visible trees: {day8.GetVisibleTreeCount()}");
 Console.WriteLine($"Day 8 Most Scenic: {day8.FindMaxScenicScore()}");
 
-
+var day9moves = GetFileInput("../../../Inputs/day9.txt");
+Day9 day9 = new Day9();
+foreach (var inst in day9moves)
+{
+    day9.MoveHead(inst);
+}
+Console.WriteLine($"Day 9: Tail Move Count: {day9.GetTailPositions()}");
 
 static List<string> GetFileInput(string fileName)
 {
