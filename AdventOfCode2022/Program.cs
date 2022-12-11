@@ -54,6 +54,13 @@ Day7 day7 = new Day7();
 Console.WriteLine($"Day 7 Small Dir Sum: {day7.SmallSum(day7cmds)}");
 Console.WriteLine($"Day 7 Small Dir to Delete: {day7.FindSmallestDirToDeleteSize(day7cmds, 70000000, 30000000)}");
 
+var day8map = GetFileInput("../../../Inputs/day8.txt");
+Day8 day8 = new Day8(day8map);
+
+Console.WriteLine($"Day 8 visible trees: {day8.GetVisibleTreeCount()}");
+Console.WriteLine($"Day 8 Most Scenic: {day8.FindMaxScenicScore()}");
+
+
 
 static List<string> GetFileInput(string fileName)
 {
