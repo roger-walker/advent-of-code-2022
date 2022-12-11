@@ -78,6 +78,15 @@ Console.Write("========================================");
 Console.WriteLine(day10Image);
 Console.WriteLine("========================================");
 
+var day11monkeys = GetFileInput("../../../Inputs/day11.txt");
+Day11 day11 = new Day11();
+day11.ParseInput(day11monkeys);
+Console.WriteLine($"Day 11: Monkeys running: {day11.RunMonkeys(20)}");
+
+Day11 day11b = new Day11(false);
+day11b.ParseInput(day11monkeys);
+Console.WriteLine($"Day 11: No Worry Monkeys running: {day11b.RunMonkeys(10000)}");
+
 
 
 static List<string> GetFileInput(string fileName)
