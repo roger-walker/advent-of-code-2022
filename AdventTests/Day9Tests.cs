@@ -51,7 +51,7 @@ namespace AdventTests
             day.Head = new Location(hX, hY);
             day.Tail = new Location(tX, tY);
 
-            Assert.That(day.IsAdjacent(), Is.EqualTo(expected));
+            Assert.That(day.IsAdjacent(day.Head, day.Tail), Is.EqualTo(expected));
         }
 
 
@@ -71,15 +71,15 @@ namespace AdventTests
             day.Head = new Location(hX, hY);
             day.Tail = new Location(tX, tY);
 
-            Assume.That(day.IsAdjacent(), Is.False);
+            Assume.That(day.IsAdjacent(day.Head, day.Tail), Is.False);
 
-            Location actual = day.MoveTail();
+            Location actual = day.MoveTail(day.Head, day.Tail);
 
             Assert.Multiple(() =>
             {
                 Assert.That(actual.X, Is.EqualTo(expX));
                 Assert.That(actual.Y, Is.EqualTo(expY));
-                Assert.That(day.IsAdjacent, Is.True);
+                Assert.That(day.IsAdjacent(day.Head, day.Tail), Is.True);
             });
         }
 
@@ -179,5 +179,75 @@ namespace AdventTests
             Assert.That(day.GetTailPositions(), Is.EqualTo(count));
             
         }
+
+
+        internal class MoveLongTailTests : IEnumerable
+        {
+            public IEnumerator GetEnumerator()
+            {
+                yield return new object[] {
+                    new string[] {  "R 5",
+                                    "U 8",
+                                    "L 8",
+                                    "D 3",
+                                    "R 17",
+                                    "D 10",
+                                    "L 25",
+                                    "U 20" 
+                    },
+                    new HashSet<Location>(){ new Location(0,0),
+                                             new Location(1,1),
+                                             new Location(2,2),
+                                             new Location(1,3),
+                                             new Location(2,4),
+                                             new Location(3,5),
+                                             new Location(4,5),
+                                             new Location(5,5),
+                                             new Location(6,4),
+                                             new Location(7,3),
+                                             new Location(8,2),
+                                             new Location(9,1),
+                                             new Location(10,0),
+                                             new Location(9,-1),
+                                             new Location(8,-2),
+                                             new Location(7,-3),
+                                             new Location(6,-4),
+                                             new Location(5,-5),
+                                             new Location(4,-5),
+                                             new Location(3,-5),
+                                             new Location(2,-5),
+                                             new Location(1,-5),
+                                             new Location(0,-5),
+                                             new Location(-1,-5),
+                                             new Location(-2,-5),
+                                             new Location(-3,-4),
+                                             new Location(-4,-3),
+                                             new Location(-5,-2),
+                                             new Location(-6,-1),
+                                             new Location(-7,0),
+                                             new Location(-8,1),
+                                             new Location(-9,2),
+                                             new Location(-10,3),
+                                             new Location(-11,4),
+                                             new Location(-11,5),
+                                             new Location(-11,6),
+                    },
+                    36
+                };
+            }
+        }
+
+                [Test]
+        [TestCaseSource(typeof(MoveLongTailTests))]
+        public void GivenInst_EnsureLongTailLocations(string[] instr, HashSet<Location> expected, int count)
+        {
+            Day9 day = new Day9(8);
+            day.RunInstructions(instr.ToList());
+
+            Assert.That(day.TailLocations, Is.EquivalentTo(expected));
+            Assert.That(day.GetTailPositions(), Is.EqualTo(count));
+
+        }
+
     }
 }

@@ -67,11 +67,20 @@
         public Location Head { get; set; } = new Location();
         public Location Tail { get; set; } = new Location();
 
+        public List<Location> Knots { get; set; } = new List<Location>();
+
         public HashSet<Location> TailLocations { get; set; } = new HashSet<Location>(new LocationEqualityComparer());
 
-        public Day9()
+        public Day9(int extra = 0)
         {
             TailLocations.Add(new Location(0,0));
+
+            //Knots.Add(Head);
+            for(int i = 0; i < extra; i++)
+            {
+                Knots.Add(new Location(0,0));
+            }
+            Knots.Add(Tail);    
         }
 
         public int GetTailPositions()
@@ -79,9 +88,9 @@
             return TailLocations.Count;
         }
 
-        public bool IsAdjacent()
+        public bool IsAdjacent(Location Curr, Location Next)
         {
-            return Math.Abs(Head.X - Tail.X) <= 1 && Math.Abs(Head.Y - Tail.Y) <= 1;
+            return Math.Abs(Curr.X - Next.X) <= 1 && Math.Abs(Curr.Y - Next.Y) <= 1;
         }
 
         public void RunInstructions(List<string> instr)
@@ -99,11 +108,21 @@
             for (int i = 0; i < dist; i++)
             {
                 Head = Move(Head, dir);
-                if (!IsAdjacent())
+                Location curr = Head;
+                foreach (var loc in Knots)
                 {
-                    Location tail = MoveTail();
-                    TailLocations.Add(tail);
+
+                    if (!IsAdjacent(curr, loc))
+                    {
+                        Location moved = MoveTail(curr, loc);
+                        if (loc == Knots.Last())
+                        {
+                            TailLocations.Add(moved);
+                        }
+                    }
+                    curr = loc;
                 }
+            
                 headMoves.Add(Head);
             }
 
@@ -158,32 +177,32 @@
             return (dir, dist);
         }
 
-        public Location MoveTail()
+        public Location MoveTail(Location Curr, Location Next)
         {
-            if (Head.X != Tail.X && Head.Y == Tail.Y)
+            if (Curr.X != Next.X && Curr.Y == Next.Y)
             {
-                int adj = Head.X - Tail.X;
-                Tail.X = adj > 0 ? Tail.X + 1 : Tail.X - 1;
+                int adj = Curr.X - Next.X;
+                Next.X = adj > 0 ? Next.X + 1 : Next.X - 1;
             }
-            else if (Head.Y != Tail.Y && Head.X == Tail.X)
+            else if (Curr.Y != Next.Y && Curr.X == Next.X)
             {
-                int adj = Head.Y - Tail.Y;
-                Tail.Y = adj > 0 ? Tail.Y + 1 : Tail.Y - 1;
+                int adj = Curr.Y - Next.Y;
+                Next.Y = adj > 0 ? Next.Y + 1 : Next.Y - 1;
             }
             else
             {
-                int adjx = Head.X - Tail.X;
-                int adjy = Head.Y - Tail.Y;
-                Tail.X = adjx > 0 ? Tail.X + 1 : Tail.X - 1;
-                Tail.Y = adjy > 0 ? Tail.Y + 1 : Tail.Y - 1;
+                int adjx = Curr.X - Next.X;
+                int adjy = Curr.Y - Next.Y;
+                Next.X = adjx > 0 ? Next.X + 1 : Next.X - 1;
+                Next.Y = adjy > 0 ? Next.Y + 1 : Next.Y - 1;
             }
 
-            if (!IsAdjacent())
+            if (!IsAdjacent(Curr, Next))
             {
                 throw new Exception("No idea where to move!");
             }
 
-            return new Location(Tail.X, Tail.Y);
+            return new Location(Next.X, Next.Y);
         }
     }
 }

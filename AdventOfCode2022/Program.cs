@@ -65,6 +65,11 @@ Day9 day9 = new Day9();
 day9.RunInstructions(day9moves);
 Console.WriteLine($"Day 9: Tail Move Count: {day9.GetTailPositions()}");
 
+Day9 day9b = new Day9(8);
+day9b.RunInstructions(day9moves);
+Console.WriteLine($"Day 9: Long Tail Move Count: {day9b.GetTailPositions()}");
+
+
 static List<string> GetFileInput(string fileName)
 {
     List<string> list = new List<string>();
