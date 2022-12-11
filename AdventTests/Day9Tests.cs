@@ -173,10 +173,7 @@ namespace AdventTests
         public void GivenInst_EnsureTailLocations(string [] instr, HashSet<Location> expected, int count)
         {
             Day9 day = new Day9();
-            foreach(var inst in instr)
-            {
-                day.MoveHead(inst);
-            }
+            day.RunInstructions(instr.ToList());
 
             Assert.That(day.TailLocations, Is.EquivalentTo(expected));
             Assert.That(day.GetTailPositions(), Is.EqualTo(count));

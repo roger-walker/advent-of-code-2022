@@ -84,6 +84,13 @@
             return Math.Abs(Head.X - Tail.X) <= 1 && Math.Abs(Head.Y - Tail.Y) <= 1;
         }
 
+        public void RunInstructions(List<string> instr)
+        {
+            foreach (var inst in instr)
+            {
+                MoveHead(inst);
+            }
+        }
 
         public List<Location> MoveHead(string instr)
         {
